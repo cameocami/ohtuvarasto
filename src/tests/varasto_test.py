@@ -88,3 +88,8 @@ class TestVarasto(unittest.TestCase):
     def test_str_representation_partial(self):
         v = Varasto(10, 3)
         self.assertEqual(str(v), "saldo = 3, vielä tilaa 7")
+
+    def test_initial_balance_exceeds_capacity(self):
+        v = Varasto(10, 15)
+        self.assertEqual(v.saldo, 10)
+        self.assertEqual(v.paljonko_mahtuu(), 0)
