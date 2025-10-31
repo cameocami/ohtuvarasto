@@ -68,8 +68,8 @@ class TestVarasto(unittest.TestCase):
     def test_take_more_than_balance(self):
         v = Varasto(10, 4)
         result = v.ota_varastosta(10)
-        self.assertEqual(result, 4)
-        self.assertEqual(v.saldo, 0)
+        self.assertEqual(result, 5)
+        self.assertEqual(v.saldo, 1)
 
     def test_take_exact_balance(self):
         v = Varasto(10, 6)
