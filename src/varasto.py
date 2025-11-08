@@ -1,6 +1,7 @@
+
 class Varasto:
     def __init__(self, tilavuus, alku_saldo=0):
-        self.tilavuus = max(tilavuus, 0.0) 
+        self.tilavuus = max(tilavuus, 0.0)
             # virheellinen tilavuus nollataan
         self.saldo = min(max(alku_saldo, 0.0), self.tilavuus)
             # virheellinen saldo nollataan
@@ -32,4 +33,3 @@ class Varasto:
 
     def __str__(self):
         return f"saldo = {self.saldo}, vielä tilaa {self.paljonko_mahtuu()}"
-        
