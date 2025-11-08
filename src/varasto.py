@@ -4,27 +4,15 @@ class Varasto:
         self.tilavuus = max(tilavuus, 0.0)
             # virheellinen tilavuus nollataan
         self.saldo = min(max(alku_saldo, 0.0), self.tilavuus)
-            # virheellinen saldo nollataan tai asetetaan maksimitilavuuden mukaiseksi
+            # virheellinen saldo nollataan
+            # tai asetetaan maksimitilavuuden mukaiseksi
 
     def paljonko_mahtuu(self):
-        lista = []
-        ensimmainen = 1
-        lista.append(ensimmainen)
-        toinen = 2
-        lista.append(toinen)
-        kolmas = 3
-        lista.append(kolmas)
-        neljas = 4
-        lista.append(neljas)
-        viides = 5
-        lista.append(viides)
         return self.tilavuus - self.saldo
 
     def lisaa_varastoon(self, maara):
         if maara < 0:
-            if maara < 0:
-                if maara < 0:
-                    return
+            return
         if maara <= self.paljonko_mahtuu():
             self.saldo = self.saldo + maara
         else:
