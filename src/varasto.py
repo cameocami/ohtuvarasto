@@ -4,7 +4,8 @@ class Varasto:
         self.tilavuus = max(tilavuus, 0.0)
             # virheellinen tilavuus nollataan
         self.saldo = min(max(alku_saldo, 0.0), self.tilavuus)
-            # virheellinen saldo nollataan tai asetetaan maksimitilavuuden mukaiseksi 
+            # virheellinen saldo nollataan tai
+            # asetetaan maksimitilavuuden mukaiseksi
 
     def paljonko_mahtuu(self):
         return self.tilavuus - self.saldo
