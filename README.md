@@ -28,6 +28,54 @@ Varastosovellus sisältää web-käyttöliittymän, joka mahdollistaa varastojen
 
 ### Käynnistys
 
+Käynnistä web-sovellus:
+
+#### Linux / macOS
+
+```bash
+cd src
+poetry run python app.py
+```
+
+Kehitystilassa:
+
+```bash
+cd src
+FLASK_DEBUG=true poetry run python app.py
+```
+
+#### Windows (PowerShell)
+
+```powershell
+cd src
+poetry run python app.py
+```
+
+Kehitystilassa:
+
+```powershell
+cd src
+$env:FLASK_DEBUG="true"; poetry run python app.py
+```
+
+#### Windows (Command Prompt)
+
+```cmd
+cd src
+poetry run python app.py
+```
+
+Kehitystilassa:
+
+```cmd
+cd src
+set FLASK_DEBUG=true && poetry run python app.py
+```
+
+Sovellus käynnistyy osoitteessa `http://localhost:5000`
+
+### Käynnistys
+
 Käynnistä web-sovellus komennolla:
 
 ```bash
@@ -36,13 +84,6 @@ poetry run python app.py
 ```
 
 Sovellus käynnistyy osoitteessa `http://localhost:5000`
-
-Kehitystilassa voit ottaa debug-tilan käyttöön:
-
-```bash
-cd src
-FLASK_DEBUG=true poetry run python app.py
-```
 
 ### Käyttö
 
