@@ -33,9 +33,6 @@ function createVarastoElement(varasto, onClickCallback, onDblClickCallback) {
         <div class="varasto-capacity">
             <span id="capacity-${varasto.id}">${varasto.paljonko_mahtuu.toFixed(1)}</span>
         </div>
-        <div class="varasto-info">
-            <span class="varasto-space">Tilaa: <span id="space-${varasto.id}">${varasto.paljonko_mahtuu.toFixed(1)}</span></span>
-        </div>
     `;
 
     element.addEventListener('click', function(e) {
@@ -95,11 +92,6 @@ function createBubble(varastoId, onLisaaClick, onOtaClick, onCloseClick) {
 }
 
 function updateVarastoDisplay(varastoId, data) {
-    const spaceElement = document.getElementById('space-' + varastoId);
-    if (spaceElement) {
-        spaceElement.textContent = data.paljonko_mahtuu.toFixed(1);
-    }
-
     const capacityElement = document.getElementById('capacity-' + varastoId);
     if (capacityElement) {
         capacityElement.textContent = data.paljonko_mahtuu.toFixed(1);

@@ -74,17 +74,6 @@ set FLASK_DEBUG=true && poetry run python app.py
 
 Sovellus käynnistyy osoitteessa `http://localhost:5000`
 
-### Käynnistys
-
-Käynnistä web-sovellus komennolla:
-
-```bash
-cd src
-poetry run python app.py
-```
-
-Sovellus käynnistyy osoitteessa `http://localhost:5000`
-
 ### Käyttö
 
 - Klikkaa **+** -painiketta luodaksesi uuden varaston
