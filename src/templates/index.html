@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varastosovellus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Varastosovellus</h1>
+        <button id="add-varasto-btn" class="add-btn" title="Luo uusi varasto">+</button>
+    </header>
+
+    <main>
+        <div id="varastot-container" class="varastot-container">
+            <!-- Varasto elements will be added here dynamically -->
+        </div>
+    </main>
+
+    <!-- Create Varasto Pop-up -->
+    <div id="create-popup" class="popup-overlay hidden">
+        <div class="popup">
+            <button class="close-btn" id="close-create-popup">&times;</button>
+            <h2>Luo uusi varasto</h2>
+            <form id="create-varasto-form">
+                <div class="form-group">
+                    <label for="tilavuus">Tilavuus:</label>
+                    <input type="number" id="tilavuus" name="tilavuus" step="0.1" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="alku_saldo">Alkusaldo:</label>
+                    <input type="number" id="alku_saldo" name="alku_saldo" step="0.1" min="0" value="0">
+                </div>
+                <button type="submit" class="submit-btn">Luo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Varasto Pop-up -->
+    <div id="edit-popup" class="popup-overlay hidden">
+        <div class="popup">
+            <button class="close-btn" id="close-edit-popup">&times;</button>
+            <h2>Muokkaa varastoa</h2>
+            <form id="edit-varasto-form">
+                <input type="hidden" id="edit-varasto-id">
+                <div class="form-group">
+                    <label for="edit-tilavuus">Tilavuus:</label>
+                    <input type="number" id="edit-tilavuus" name="tilavuus" step="0.1" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-alku_saldo">Alkusaldo:</label>
+                    <input type="number" id="edit-alku_saldo" name="alku_saldo" step="0.1" min="0" value="0">
+                </div>
+                <button type="submit" class="submit-btn">Tallenna</button>
+                <button type="button" id="delete-varasto-btn" class="delete-btn">Poista</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
