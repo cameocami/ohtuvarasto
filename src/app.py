@@ -7,6 +7,16 @@ varastot = {}
 counter = {'value': 0}
 
 
+def parse_float(value, default=0.0):
+    try:
+        result = float(value)
+        if result < 0:
+            return default
+        return result
+    except (TypeError, ValueError):
+        return default
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -27,9 +37,9 @@ def get_varastot():
 
 @app.route('/api/varastot', methods=['POST'])
 def create_varasto():
-    data = request.get_json()
-    tilavuus = float(data.get('tilavuus', 0))
-    alku_saldo = float(data.get('alku_saldo', 0))
+    data = request.get_json() or {}
+    tilavuus = parse_float(data.get('tilavuus'))
+    alku_saldo = parse_float(data.get('alku_saldo'))
 
     varasto = Varasto(tilavuus, alku_saldo)
     counter['value'] += 1
@@ -49,9 +59,9 @@ def update_varasto(varasto_id):
     if varasto_id not in varastot:
         return jsonify({'error': 'Varasto not found'}), 404
 
-    data = request.get_json()
-    tilavuus = float(data.get('tilavuus', 0))
-    alku_saldo = float(data.get('alku_saldo', 0))
+    data = request.get_json() or {}
+    tilavuus = parse_float(data.get('tilavuus'))
+    alku_saldo = parse_float(data.get('alku_saldo'))
 
     varasto = Varasto(tilavuus, alku_saldo)
     varastot[varasto_id] = varasto
@@ -69,8 +79,8 @@ def lisaa_varastoon(varasto_id):
     if varasto_id not in varastot:
         return jsonify({'error': 'Varasto not found'}), 404
 
-    data = request.get_json()
-    maara = float(data.get('maara', 0))
+    data = request.get_json() or {}
+    maara = parse_float(data.get('maara'))
 
     varasto = varastot[varasto_id]
     old_saldo = varasto.saldo
@@ -91,8 +101,8 @@ def ota_varastosta(varasto_id):
     if varasto_id not in varastot:
         return jsonify({'error': 'Varasto not found'}), 404
 
-    data = request.get_json()
-    maara = float(data.get('maara', 0))
+    data = request.get_json() or {}
+    maara = parse_float(data.get('maara'))
 
     varasto = varastot[varasto_id]
     taken = varasto.ota_varastosta(maara)
@@ -116,4 +126,6 @@ def delete_varasto(varasto_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    debug_mode = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    app.run(debug=debug_mode)

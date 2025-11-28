@@ -37,6 +37,13 @@ poetry run python app.py
 
 Sovellus käynnistyy osoitteessa `http://localhost:5000`
 
+Kehitystilassa voit ottaa debug-tilan käyttöön:
+
+```bash
+cd src
+FLASK_DEBUG=true poetry run python app.py
+```
+
 ### Käyttö
 
 - Klikkaa **+** -painiketta luodaksesi uuden varaston

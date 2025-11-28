@@ -112,7 +112,7 @@
             const tilavuus = document.getElementById('edit-tilavuus').value;
             const alku_saldo = document.getElementById('edit-alku_saldo').value;
 
-            fetch('/api/varastot/' + varastoId, {
+            fetch(`/api/varastot/${varastoId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -133,7 +133,7 @@
         document.getElementById('delete-varasto-btn').addEventListener('click', function() {
             const varastoId = document.getElementById('edit-varasto-id').value;
             
-            fetch('/api/varastot/' + varastoId, {
+            fetch(`/api/varastot/${varastoId}`, {
                 method: 'DELETE'
             })
             .then(response => response.json())
@@ -250,7 +250,7 @@
         }
 
         function lisaaVarastoon(varastoId, maara, wrapper) {
-            fetch('/api/varastot/' + varastoId + '/lisaa', {
+            fetch(`/api/varastot/${varastoId}/lisaa`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -260,12 +260,12 @@
             .then(response => response.json())
             .then(data => {
                 updateVarastoDisplay(varastoId, data);
-                showFloatingNumber(wrapper, '+' + data.added.toFixed(1), 'green');
+                showFloatingNumber(wrapper, `+${data.added.toFixed(1)}`, 'green');
             });
         }
 
         function otaVarastosta(varastoId, maara, wrapper) {
-            fetch('/api/varastot/' + varastoId + '/ota', {
+            fetch(`/api/varastot/${varastoId}/ota`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -275,7 +275,7 @@
             .then(response => response.json())
             .then(data => {
                 updateVarastoDisplay(varastoId, data);
-                showFloatingNumber(wrapper, '-' + data.taken.toFixed(1), 'red');
+                showFloatingNumber(wrapper, `-${data.taken.toFixed(1)}`, 'red');
             });
         }
 
